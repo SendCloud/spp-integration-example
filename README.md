@@ -11,8 +11,7 @@
 * You'll need that data later when creating a new parcel through our Parcels API (see __Create new parcel__ in [our api documentation](https://docs.sendcloud.sc/api/v2/index.html#parcel)). Make sure to fill in the `to_service_point` parameter when sending the data over.
 
 ### Officially supported browsers ###
-* IE >= 9
+* IE >= 10
 * Firefox
 * Chrome
 * Safari
- 
