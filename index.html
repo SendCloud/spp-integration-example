@@ -109,7 +109,7 @@
                         <div class="panel-heading">Limiting carriers available to the user.</div>
                         <div class="panel-body">
                             <div class="alert alert-info"><strong>Heads up!</strong> We do not recommend filtering carriers unless you really have the need to do so.</div>
-                            <p>By default, service points from all selected carriers in your integration settings will be available. You can filter the results further by passing a <code>carriers</code> 
+                            <p>By default, service points from all selected carriers in your integration settings will be available. You can filter the results further by passing a <code>carriers</code>
                             parameter when opening the service point picker.</p>
 
                             <form action="" class="form-horizontal">
@@ -139,7 +139,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Quickstart</div>
                         <div class="panel-body">
-                            <p>Begin by adding our script to your HTML page: <code>&lt;script type="text/javascript" src="https://embed.sendcloud.sc/spp/api-1.0.0.js"&gt;&lt;/script&gt;</code></p>
+                            <p>Begin by adding our script to your HTML page: <code>&lt;script type="text/javascript" src="https://embed.sendcloud.sc/spp/1.0.0/api.min.js"&gt;&lt;/script&gt;</code></p>
 
                             <p>You need to provide <code>sendcloud.servicePoints.open</code> a config object, a success callback function and an error callback function.</p>
 
@@ -196,9 +196,9 @@
         }
         sendcloud.servicePoints.open(
             // first arg: config object
-            config, 
+            config,
             // second arg: success callback function
-            function(servicePointObject) { 
+            function(servicePointObject) {
                 resultElem.innerHTML = JSON.stringify(servicePointObject, null, 4);
                 postResultElem.style.display = 'block';
                 resultElem.style.display = 'block';
@@ -234,8 +234,8 @@
         <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 
         <!-- Dependencies -->
-        <script type="text/javascript" src="https://embed.sendcloud.sc/spp/1.0.0/api.min.js"></script>
 
+        <script type="text/javascript" src="https://embed.sendcloud.sc/spp/1.0.0/api.min.js"></script>
         <!-- Usage -->
         <script type="text/javascript">
             var resultElem = document.getElementById('result'),
@@ -290,7 +290,7 @@
                     'postalCode': postalCode,
                     // Language is also not required. defaults to "en" - (available options en, fr, nl, de)
                     'language': language,
-                    // you can filter service points by carriers as well. 
+                    // you can filter service points by carriers as well.
                     'carriers': carriers, // comma separated string (e.g. "postnl,bpost,dhl")
                     // you can also pass a servicePointId if you want the map to be opened at a preselected service point
                     'servicePointId': servicePointId // integer
@@ -298,9 +298,9 @@
 
                 sendcloud.servicePoints.open(
                     // first arg: config object
-                    config, 
+                    config,
                     // second arg: success callback function
-                    function(servicePointObject) { 
+                    function(servicePointObject) {
                         resultElem.innerHTML = JSON.stringify(servicePointObject, null, 4);
                         postResultElem.style.display = 'block';
                         resultElem.style.display = 'block';
