@@ -31,4 +31,4 @@ of possible values to be used to [filter service points to certain carriers][liv
 [docs-api-service-points]: <https://docs.sendcloud.sc/api/v2/service-points/>
 [docs-parcel-api]: <https://docs.sendcloud.sc/api/v2/index.html#parcel>
 [live-example]: <https://sendcloud.github.io/spp-integration-example/>
-[live-example]: <https://sendcloud.github.io/spp-integration-example#filter-carriers/>
+[live-example-carriers]: <https://sendcloud.github.io/spp-integration-example#filter-carriers/>
