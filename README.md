@@ -16,7 +16,7 @@ Currently implements Sendcloud's v1.0 Service Point Picker Embed JS.
 
 ## Further reading
 
-Please, refer to the [Service Points API documentation][docs-api-service-points]. There you can determine the list
+Please refer to the [Service Points API documentation][docs-api-service-points]. There you can determine the list
 of possible values to be used to [filter service points to certain carriers][live-example-carriers], for example.
 
 ## Officially supported browsers
