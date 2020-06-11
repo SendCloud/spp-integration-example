@@ -21,11 +21,12 @@ of possible values to be used to [filter service points to certain carriers][liv
 
 ## Officially supported browsers
 
-- IE >= 10
 - Edge (Blink, and Chromium)
 - Firefox
 - Chrome
 - Safari
+
+> Please not that service points **do not** support Internet Explorer
 
 [docs-api-integration]: <https://support.sendcloud.com/hc/en-us/articles/360024967612-Service-points-for-API-Integrations>
 [docs-api-service-points]: <https://docs.sendcloud.sc/api/v2/service-points/>
