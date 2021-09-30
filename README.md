@@ -1,16 +1,15 @@
-# Service Point Picker
+# Service point picker
 
-This repository demonstrates how to integrate Sendcloud's Service Point Picker into a custom application.
+This repository demonstrates how to integrate Sendcloud's service point picker into a custom application.
 
-Currently implements Sendcloud's v1.0 Service Point Picker Embed JS.
+Currently implements Sendcloud's v1.0 service point picker Embed JS.
 
 > 💡Tip: read the [index.html](index.html) file source code.
 
 ## How to set up
 
 - Enable Service Points in your Sendcloud's [API integration][docs-api-integration]
-- [Play around with the live example][live-example]. When selecting a service point you'll receive a Service Point
-  object and optionally a post number as the result.
+- [Play around with the live example][live-example]. When selecting a service point you'll receive a Service Point object and optionally a post number as the result.
 - You'll need that data later when creating a new parcel through our Parcels API (see **Create new parcel** in [our api documentation][docs-parcel-api]).
 - Make sure to fill in the `to_service_point` and `to_post_number` parameters when sending the data over.
 
