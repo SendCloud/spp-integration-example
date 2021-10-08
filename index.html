@@ -5,98 +5,142 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Sendcloud service point picker: integration examples</title>
+  <title>Sendcloud service point picker: API integration demo</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" />
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
   <style>
-    #postResult,
-    #result {
+    body:not(.is-showing-api-result) #postResult {
       display: none;
     }
 
-    h2 {
-      margin-top: 0;
+    .form-label {
+      font-weight: bold;
     }
 
-    label {
+    .form-label,
+    .form-check-label {
       display: block;
+    }
+
+    .form-label__required {
+      font-weight: normal;
+    }
+
+    pre:last-child {
+      margin-bottom: 0;
+    }
+
+    .hljs {
+      background-color: #f8f8f8;
     }
   </style>
 </head>
 
 <body>
-  <div class="page-header">
-    <h1>Service point picker <small>Examples</small></h1>
-  </div>
+  <main class="container-fluid p-4">
+    <div class="page-header">
+      <h1>Sendcloud service point picker: API integration demo</h1>
+    </div>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2 class="panel-heading__header" id="api-key">
-              API Key*
+    <div class="row mt-4">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h2 id="basic-example" class="card-title">
+              Options
             </h2>
           </div>
 
-          <div class="panel-body">
-            <p>
-              An API key is always required. You can find yours in your integration settings page. Please paste it
-              below.
-            </p>
-
+          <div class="card-body">
             <form action="" class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2" for="apiKey">API Key</label>
-                <div class="col-sm-10">
-                  <input type="text" placeholder="API Key" id="apiKey" class="form-control" />
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="apiKey" class="form-label">
+                    API key <span class="form-label__required">(required)</span>
+                  </label>
+
+                  <code>apiKey</code>
+                </div>
+
+                <div class="col-md-10">
+                  <input type="text" id="apiKey" class="form-control" />
+
+                  <div class="form-text">
+                    You can find your API key on the <a href="https://panel.sendcloud.sc/v2/settings/integrations/manage">integration settings page</a>. It is needed to test the examples below.
+                  </div>
                 </div>
               </div>
-            </form>
-          </div>
-        </div>
 
-        <!-- Examples -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2 class="panel-heading__header" id="basic-example">
-              Basic Example
-            </h2>
-          </div>
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <label for="country" class="form-label">
+                    Country <span class="form-label__required">(required)</span>
+                  </label>
 
-          <div class="panel-body">
-            <p>
-              These are the only required parameters, passed to <code>country</code> and <code>language</code> parameters respectively when displaying service points.
-            </p>
+                  <code>country</code>
+                </div>
 
-            <form action="" class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2" for="country">Country</label>
-                <div class="col-sm-10">
-                  <select id="country" class="form-control">
+                <div class="col-md-10">
+                  <select class="form-select" id="country">
+                    <option value="ad">Andorra</option>
+                    <option value="at">Austria</option>
                     <option value="be">Belgium</option>
-                    <option value="uk">United Kingdom</option>
+                    <option value="bg">Bulgaria</option>
+                    <option value="ch">Switzerland</option>
+                    <option value="cz">Czechia</option>
                     <option value="de">Germany</option>
+                    <option value="dk">Denmark</option>
+                    <option value="ee">Estonia</option>
                     <option value="es">Spain</option>
+                    <option value="fi">Finland</option>
                     <option value="fr">France</option>
+                    <option value="gb">United Kingdom</option>
+                    <option value="gr">Greece</option>
+                    <option value="hr">Croatia</option>
+                    <option value="hu">Hungary</option>
+                    <option value="ie">Ireland</option>
                     <option value="it">Italy</option>
-                    <option value="nl" selected>Netherlands</option>
+                    <option value="lt">Lithuania</option>
+                    <option value="lu">Luxembourg</option>
+                    <option value="lv">Latvia</option>
+                    <option value="nl" selected>The Netherlands</option>
+                    <option value="no">Norway</option>
+                    <option value="pl">Poland</option>
+                    <option value="pt">Portugal</option>
+                    <option value="ro">Romania</option>
+                    <option value="se">Sweden</option>
+                    <option value="si">Slovenia</option>
+                    <option value="sk">Slovakia</option>
+                    <option value="ua">Ukraine</option>
                   </select>
+
+                  <div class="form-text">
+                    Examples:
+                    <code>de</code>,
+                    <code>es</code>,
+                    <code>fr</code>,
+                    <code>gb</code>,
+                    <code>it</code>,
+                    <code>nl</code>
+                  </div>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="col-sm-2" for="language">UI Language</label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="language">
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <label for="language" class="form-label">
+                    UI Language <span class="form-label__required">(required)</span>
+                  </label>
+
+                  <code>language</code>
+                </div>
+
+                <div class="col-md-10">
+                  <select class="form-select" id="language">
                     <option value="de-de">Deutsch</option>
                     <option value="en-gb">English (UK)</option>
                     <option value="en-us" selected>English (US)</option>
@@ -106,7 +150,7 @@
                     <option value="nl-nl">Nederlands</option>
                   </select>
 
-                  <small>
+                  <div class="form-text">
                     Available options:
                     <code>de-de</code>,
                     <code>en-gb</code>,
@@ -115,255 +159,246 @@
                     <code>fr-fr</code>,
                     <code>it-it</code>,
                     <code>nl-nl</code>
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2">
-                  <button type="button" class="form-control btn btn-primary" id="basicExample">
-                    Select service point
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2 class="panel-heading__header" id="advanced-example">
-              Advanced Example
-            </h2>
-          </div>
-
-          <div class="panel-body">
-            <p>
-              You may pass additional parameters to the Service Point Picker, like the postal code and previously selected service point identifier.
-            </p>
-
-            <form action="" class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2" for="postalCode">Postal Code</label>
-                <div class="col-sm-10">
-                  <input class="form-control" type="text" id="postalCode" placeholder="1018 AM" />
-
-                  <small class="help-text">
-                    <strong>Heads up!</strong> If a service point ID is provided, the postal code parameter will be ignored and the service point location displayed instead.
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2" for="city">City</label>
-                <div class="col-sm-10">
-                  <input class="form-control" type="text" id="city" placeholder="Amsterdam" />
-
-                  <small class="help-text">
-                    <strong>Heads up!</strong> If a service point ID is provided, the city parameter will be ignored and the service point location displayed instead.
-                  </small>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2" for="servicePointId">Service Point ID</label>
-                <!-- You can pass along a service point ID in order to open the map in a preselected service point -->
-                <div class="col-sm-10">
-                  <input type="text" id="servicePointId" class="form-control" />
-
-                  <small class="help-text">You can open the service point picker with a Service Point ID and its location will be shown immediately to the user.</small>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2" for="postNumber">Post number</label>
-                <!-- Certain service point types may include a post number -->
-                <div class="col-sm-10">
-                  <input type="text" id="postNumber" placeholder="17455093" class="form-control" />
-                  <small class="help-text">Open the service point picker with a Post number and its value will be immediately shown to the user.</small>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2">
-                  <button type="button" class="form-control btn btn-primary" id="advancedExample">
-                    Select service point
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2 class="panel-heading__header" id="filter-carriers">Limiting carriers available to the user</h2>
-          </div>
-
-          <div class="panel-body">
-            <div class="alert alert-info">
-              <strong>Heads up!</strong> filtering carriers is limited to the carriers selected in your integration settings on the Sendcloud platform
-            </div>
-
-            <p>
-              By default, service points from all selected carriers in your integration settings will be available. You can filter the results further by passing a <code>carriers</code> parameter when opening the service point picker.
-            </p>
-
-            <p>
-              Example values:
-              <code>bpost</code>,
-              <code>chronopost</code>,
-              <code>colissimo</code>,
-              <code>correos</code>,
-              <code>dhl</code>,
-              <code>mondial_relay</code>,
-              <code>poste_italiane</code>,
-              <code>postnl</code>,
-              <code>ups</code>
-            </p>
-
-            <p>
-              For a full list of supported carrier codes, please check the <a href="https://docs.sendcloud.sc/api/v2/service-points/#list-active-carriers">carrier list endpoint documentation</a> of the Service Points API.
-            </p>
-
-            <form action="" class="form-horizontal">
-              <div class="form-group">
-                <label for="" class="col-sm-2">Carriers</label>
-
-                <div class="col-sm-10">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" name="carriers" value="bpost">
-                      bpost
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="chronopost">
-                      Chronopost
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="colissimo">
-                      Colissimo
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="correos">
-                      Correos
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="correos_express">
-                      Correos Express
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="dhl_de">
-                      DHL (Germany)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="dhl">
-                      DHL
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="dpd">
-                      DPD
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="dpd_fr">
-                      DPD (France)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="dpd_gb">
-                      DPD (UK)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="dpd_local">
-                      DPD (Local)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="gls_de">
-                      GLS (Germany)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="gls_es">
-                      GLS (Spain)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="gls_nl">
-                      GLS (Netherlands)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="hermes_gb">
-                      Hermes (UK)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="hermes_c2c_gb">
-                      Hermes (UK C2C)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="homerr">
-                      Homerr
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="inpost_gb">
-                      Inpost (UK)
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="mondial_relay">
-                      Mondial Relay
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="postat">
-                      Post AT
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="poste_italiane">
-                      Poste Italiane
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="postnl">
-                      PostNL
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="royal_mail">
-                      Royal Mail
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="seur">
-                      SEUR
-                    </label>
-
-                    <label>
-                      <input type="checkbox" name="carriers" value="ups">
-                      UPS
-                    </label>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2">
-                  <button type="button" class="form-control btn btn-primary" id="limitCarriers">
-                    Select service point
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <label for="postalCode" class="form-label">
+                    Postal Code
+                  </label>
+
+                  <code>postalCode</code>
+                </div>
+
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="postalCode" placeholder="1018 AM" />
+
+                  <div class="form-text">
+                    <strong>Note</strong>: if a service point ID is provided, the postal code parameter will be ignored and the service point location will be displayed instead.
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <label for="city" class="form-label">
+                    City
+                  </label>
+
+                  <code>city</code>
+                </div>
+
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="city" placeholder="Amsterdam" />
+
+                  <div class="form-text">
+                    <strong>Note</strong>: if a service point ID is provided, the city parameter will be ignored and the service point location will be displayed instead.
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <label for="servicePointId" class="form-label">
+                    Service point ID
+                  </label>
+
+                  <code>servicePointId</code>
+                </div>
+
+                <div class="col-md-10">
+                  <input type="text" id="servicePointId" class="form-control" />
+
+                  <small class="form-text">You can open the service point picker with a service point ID and its location will be shown instead of the country’s default location.</small>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <label for="postNumber" class="form-label">
+                    Post number
+                  </label>
+
+                  <code>postNumber</code>
+                </div>
+
+                <div class="col-md-10">
+                  <input type="text" id="postNumber" placeholder="17455093" class="form-control" />
+                  <small class="form-text">Pre-fill the service point picker’s post number field.</small>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-2">
+                  <span class="form-label">
+                    Carriers
+                  </span>
+
+                  <code>carriers</code>
+                </div>
+
+                <div class="col-md-10">
+
+                  <div class="alert alert-info">
+                    <strong>Heads up</strong>: filtering carriers is limited to the carriers selected in your integration settings in the Sendcloud platform.
+                  </div>
+
+                  <p>
+                    By default, service points from all selected carriers in your integration settings will be available. You can filter the results further by passing a <code>carriers</code> parameter when opening the service point picker.
+                  </p>
+
+                  <p>
+                    Example values:
+                    <code>bpost</code>,
+                    <code>chronopost</code>,
+                    <code>colissimo</code>,
+                    <code>correos</code>,
+                    <code>dhl</code>,
+                    <code>mondial_relay</code>,
+                    <code>poste_italiane</code>,
+                    <code>postnl</code>,
+                    <code>ups</code>
+                  </p>
+
+                  <p>
+                    For a full list of supported carrier codes, please check the <a href="https://docs.sendcloud.sc/api/v2/service-points/#list-active-carriers">carrier list endpoint documentation</a> of the service points API.
+                  </p>
+
+                  <div>
+                    <div class="form-check">
+                      <input id="carrier_bpost" class="form-check-input" type="checkbox" name="carriers" value="bpost">
+                      <label for="carrier_bpost" class="form-check-label">Bpost</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_chronopost" class="form-check-input" type="checkbox" name="carriers" value="chronopost">
+                      <label for="carrier_chronopost" class="form-check-label">Chronopost</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_colissimo" class="form-check-input" type="checkbox" name="carriers" value="colissimo">
+                      <label for="carrier_colissimo" class="form-check-label">Colissimo</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_correos" class="form-check-input" type="checkbox" name="carriers" value="correos">
+                      <label for="carrier_correos" class="form-check-label">Correos</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_correos_express" class="form-check-input" type="checkbox" name="carriers" value="correos_express">
+                      <label for="carrier_correos_express" class="form-check-label">Correos Express</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_dhl" class="form-check-input" type="checkbox" name="carriers" value="dhl">
+                      <label for="carrier_dhl" class="form-check-label">DHL</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_dhl_de" class="form-check-input" type="checkbox" name="carriers" value="dhl_de">
+                      <label for="carrier_dhl_de" class="form-check-label">DHL Germany</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_dpd" class="form-check-input" type="checkbox" name="carriers" value="dpd">
+                      <label for="carrier_dpd" class="form-check-label">DPD</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_dpd_fr" class="form-check-input" type="checkbox" name="carriers" value="dpd_fr">
+                      <label for="carrier_dpd_fr" class="form-check-label">DPD France</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_dpd_gb" class="form-check-input" type="checkbox" name="carriers" value="dpd_gb">
+                      <label for="carrier_dpd_gb" class="form-check-label">DPD UK</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_dpd_local" class="form-check-input" type="checkbox" name="carriers" value="dpd_local">
+                      <label for="carrier_dpd_local" class="form-check-label">DPD (Local)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_gls_de" class="form-check-input" type="checkbox" name="carriers" value="gls_de">
+                      <label for="carrier_gls_de" class="form-check-label">GLS Germany</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_gls_es" class="form-check-input" type="checkbox" name="carriers" value="gls_es">
+                      <label for="carrier_gls_es" class="form-check-label">GLS Spain</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_gls_nl" class="form-check-input" type="checkbox" name="carriers" value="gls_nl">
+                      <label for="carrier_gls_nl" class="form-check-label">GLS Netherlands</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_hermes_gb" class="form-check-input" type="checkbox" name="carriers" value="hermes_gb">
+                      <label for="carrier_hermes_gb" class="form-check-label">Hermes UK</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_hermes_c2c_gb" class="form-check-input" type="checkbox" name="carriers" value="hermes_c2c_gb">
+                      <label for="carrier_hermes_c2c_gb" class="form-check-label">Hermes UK (C2C)</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_homerr" class="form-check-input" type="checkbox" name="carriers" value="homerr">
+                      <label for="carrier_homerr" class="form-check-label">Homerr</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_inpost_gb" class="form-check-input" type="checkbox" name="carriers" value="inpost_gb">
+                      <label for="carrier_inpost_gb" class="form-check-label">Inpost UK</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_mondial_relay" class="form-check-input" type="checkbox" name="carriers" value="mondial_relay">
+                      <label for="carrier_mondial_relay" class="form-check-label">Mondial Relay</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_postat" class="form-check-input" type="checkbox" name="carriers" value="postat">
+                      <label for="carrier_postat" class="form-check-label">Post AT</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_poste_italiane" class="form-check-input" type="checkbox" name="carriers" value="poste_italiane">
+                      <label for="carrier_poste_italiane" class="form-check-label">Poste Italiane</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_postnl" class="form-check-input" type="checkbox" name="carriers" value="postnl">
+                      <label for="carrier_postnl" class="form-check-label">PostNL</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_royal_mail" class="form-check-input" type="checkbox" name="carriers" value="royal_mail">
+                      <label for="carrier_royal_mail" class="form-check-label">Royal Mail</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_seur" class="form-check-input" type="checkbox" name="carriers" value="seur">
+                      <label for="carrier_seur" class="form-check-label">SEUR</label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="carrier_ups" class="form-check-input" type="checkbox" name="carriers" value="ups">
+                      <label for="carrier_ups" class="form-check-label">UPS</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary" id="openServicePointPicker">
+                    Open service point picker
                   </button>
                 </div>
               </div>
@@ -371,14 +406,14 @@
           </div>
         </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h2 class="panel-heading__header" id="quick-start">
-              Quickstart
+        <div class="card mt-4">
+          <div class="card-header">
+            <h2 id="usage" class="card-title">
+              Usage
             </h2>
           </div>
 
-          <div class="panel-body">
+          <div class="card-body">
             <p>
               Begin by adding our script to your HTML page:
             </p>
@@ -391,43 +426,44 @@
 
             <p>The example on this page uses the following code:</p>
 
-            <pre><code class="javascript"><span id="example-code"></span></code></pre>
+            <pre><code id="exampleCode" class="language-javascript"></code></pre>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div id="postResult">
-          <p>
-            You now need to send the retrieved data to Sendcloud's Parcel API (described in <a href="https://docs.sendcloud.sc/api/v2/index.html#parcel" target="_blank" rel="noopener noreferrer nofollow">https://docs.sendcloud.sc/api/v2/index.html#parcel</a>). When creating a new Parcel you'll need to forward the delivery address as stated in the result below among with the service point ID in the <strong>"to_service_point"</strong> field. <strong>Be aware that the service point IDs have limited lifetime and change constantly. They weren't designed for persistance.</strong>
-          </p>
+      <div class="col-lg-4">
+        <div id="postResult" class="card">
+          <div class="card-header">
+            <h2 id="selected-service-point" class="card-title">
+              Selected service point
+            </h2>
+          </div>
 
-          <p>
-            When creating shipments with service points <strong>always</strong> send the <code>to_post_number</code> field with the value returned by the service point selection.
-          </p>
+          <div class="card-body">
+            <p>
+              You now need to send the retrieved data to Sendcloud’s Parcel API (described in <a href="https://docs.sendcloud.sc/api/v2/index.html#parcel" target="_blank" rel="noopener noreferrer nofollow">https://docs.sendcloud.sc/api/v2/index.html#parcel</a>). When creating a new parcel you’ll need to forward the delivery address as stated in the result below among with the service point ID in the <code>to_service_point</code> field. <strong>Be aware that the service point IDs have limited lifetime and change constantly. They weren’t designed for persistance.</strong>
+            </p>
 
-          <p>
-            <strong>Post number:</strong> <span class="result__to-post-number"></span><br>
-            <strong>Service point data:</strong>
-          </p>
+            <p>
+              When creating shipments with service points <strong>always</strong> send the <code>to_post_number</code> field with the value returned by the service point selection.
+            </p>
+
+            <p>
+              <strong>Post number:</strong> <span id="postNumberResultElement"></span><br>
+              <strong>Service point:</strong>
+            </p>
+
+            <pre><code id="servicePointResult" class="language-json"></code></pre>
+          </div>
         </div>
-
-        <pre id="result"></pre>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad()
-  </script>
-
-  <!-- Dependencies -->
+  </main>
 
   <script src="https://embed.sendcloud.sc/spp/1.0.0/api.min.js"></script>
   <!-- Usage -->
-  <script id="actual-code">
-    const apiKeyElem = document.getElementById('apiKey')
+  <script id="actualExampleCode">
+    const apiKeyField = document.getElementById('apiKey')
 
     const countryField = document.getElementById('country')
     const languageField = document.getElementById('language')
@@ -437,44 +473,41 @@
     const servicePointIdField = document.getElementById('servicePointId')
     const postNumberField = document.getElementById('postNumber')
 
-    const resultElem = document.getElementById('result')
-    const postResultElem = document.getElementById('postResult')
-    const basicExampleButton = document.getElementById('basicExample')
-    const advancedExampleButton = document.getElementById('advancedExample')
-    const carriersExampleButton = document.getElementById('limitCarriers')
+    const openServicePointPickerButton = document.getElementById('openServicePointPicker')
+    const servicePointResultElement = document.getElementById('servicePointResult')
+    const resultPostNumberField = document.getElementById('postNumberResultElement')
 
-    basicExampleButton.addEventListener('click', function () {
-      openServicePointPicker(countryField.value, languageField.value)
-    })
+    openServicePointPickerButton.addEventListener('click', openServicePointPicker)
 
-    advancedExampleButton.addEventListener('click', function () {
-      openServicePointPicker(
-        countryField.value,
-        languageField.value,
-        postalCodeField.value,
-        cityField.value,
-        null,
-        servicePointIdField.value,
-        postNumberField.value
-      )
-    })
-
-    carriersExampleButton.addEventListener('click', function () {
-      openServicePointPicker(
-        countryField.value,
-        languageField.value,
-        postalCodeField.value,
-        cityField.value,
-        getCarrierList()
-      )
-    })
-
-    function getApiKey() {
-      if (!apiKeyElem.value) {
+    function openServicePointPicker() {
+      if (!apiKeyField.value) {
         alert('Missing API key')
       }
 
-      return apiKeyElem.value
+      /**
+       * @typedef {object} ServicePointPickerOptions
+       * @property {string} apiKey Required. Set it to your API key.
+       * @property {string} country Required. ISO-2 code of the country you want to display the map in.
+       * @property {string} language Optional. Defaults to 'en-us'.
+       * @property {string} postalCode Optional. Defaults to '' (empty string).
+       * @property {string} city Optional. Defaults to '' (empty string).
+       * @property {string} carriers Optional. Comma-separated list of carriers for which to filter service points. If not provided, the service points aren’t filtered.
+       * @property {number} servicePointId Optional. Set a pre-selected service point to be shown upon displaying the map.
+       * @property {string} postNumber Optional. Set a pre-defined post number to fill its corresponding field upon displaying the map.
+       */
+
+      /** @type {ServicePointPickerOptions} */ const options = {
+        apiKey: apiKeyField.value,
+        country: countryField.value,
+        postalCode: postalCodeField.value,
+        city: cityField.value,
+        carriers: getCarrierList(),
+        servicePointId: parseInt(servicePointIdField.value),
+        postNumber: postNumberField.value,
+        language: languageField.value,
+      }
+
+      sendcloud.servicePoints.open(options, successCallback, failureCallback)
     }
 
     function getCarrierList() {
@@ -486,81 +519,42 @@
     }
 
     /**
-     * @param {string} country
-     * @param {'de-de' | 'en-gb' | 'en-us' | 'es-es' | 'fr-fr' | 'it-it' | 'nl-nl'} language
-     * @param {string} [postalCode]
-     * @param {string} [city]
-     * @param {string} [carriers]
-     * @param {number} [servicePointId]
-     * @param {string} [postNumber]
+     * Handles the selection of a service point.
+     *
+     * @param {ServicePoint} servicePoint
+     * @param {string} postNumber Used as `to_post_number` field in the Parcel creation API
      */
-    function openServicePointPicker(
-      country,
-      language,
-      postalCode,
-      city,
-      carriers,
-      servicePointId,
-      postNumber
-    ) {
-        /**
-         * @typedef {object} ConfigurationHash
-         * @property {string} apiKey Required. Set it to your API key.
-         * @property {string} country Required. ISO-2 code of the country you want to display the map in.
-         * @property {string} language Optional. Defaults to 'en-us'.
-         * @property {string} postalCode Optional. Defaults to '' (empty string).
-         * @property {string} city Optional. Defaults to '' (empty string).
-         * @property {string} carriers Optional. Comma-separated list of carriers for which to filter service points. If not provided, the service points aren’t filtered.
-         * @property {number} servicePointId Optional. Set a pre-selected service point to be shown upon displaying the map.
-         * @property {string} postNumber Optional. Set a pre-defined post number to fill its corresponding field upon displaying the map.
-         */
+    function successCallback(servicePoint, postNumber) {
+      servicePointResultElement.innerHTML = JSON.stringify(servicePoint, null, 2)
+      resultPostNumberField.innerText = postNumber || '—'
+      hljs.highlightElement(servicePointResultElement);
+      document.body.classList.add('is-showing-api-result')
+    }
 
-        /** @type {ConfigurationHash} */ const config = {
-        apiKey: getApiKey(),
-        country,
-        postalCode,
-        city,
-        carriers,
-        servicePointId: parseInt(servicePointId),
-        postNumber,
-        language,
-      }
-
-      /**
-       * Handles the selection of a service point.
-       *
-       * @param {ServicePoint} servicePoint
-       * @param {string} postNumber Used as `to_post_number` field in the Parcel creation API
-       */
-      function successCallback(servicePoint, postNumber) {
-        resultElem.innerHTML = JSON.stringify(servicePoint, null, 2)
-        postResultElem.style.display = 'block'
-        postResultElem.querySelector('.result__to-post-number').innerText = postNumber || '—'
-        resultElem.style.display = 'block'
-      }
-
-      /**
-       * Handles error events and closing the service point picker.
-       *
-       * @param {string[]} errors
-       */
-      function failureCallback(errors) {
-        errors.forEach(function (error) {
-          console.log('Failure callback, reason: ' + error)
-        })
-      }
-
-      sendcloud.servicePoints.open(config, successCallback, failureCallback)
+    /**
+     * Handles error events and closing the service point picker.
+     *
+     * @param {string[]} errors
+     */
+    function failureCallback(errors) {
+      document.body.classList.remove('is-showing-api-result')
+      console.error('[Failure callback]', errors.join(', '))
     }
   </script>
 
-  <script type="text/javascript">
-    const code = document.getElementById('actual-code').innerText.replace(/^\n/, '')
+  <script>
+    const code = document.getElementById('actualExampleCode').innerText.replace(/^\n/, '')
     const indentation = code.match(/^(\s+)/)[0]
-    document.getElementById('example-code').innerText = code.split('\n')
+    const deIndentedCode = code.split('\n')
       .map((line) => line.startsWith(indentation) ? line.replace(indentation, '') : line)
       .join('\n')
       .trim()
+    document.getElementById('exampleCode').innerHTML = deIndentedCode
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll()
   </script>
 </body>
 
