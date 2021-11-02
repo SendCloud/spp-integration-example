@@ -232,6 +232,40 @@
 
               <div class="row mt-3">
                 <div class="col-md-2">
+                  <label for="shopType" class="form-label">
+                    Shop type
+                  </label>
+
+                  <code>shopType</code>
+                </div>
+
+                <div class="col-md-10">
+                  <select class="form-select" id="shopType">
+                    <option value="" selected>Any</option>
+                    <option value="packStation">Pack station (DHL)</option>
+                    <option value="parcelShop">Parcel shop (DHL)</option>
+                    <option value="postOffice">Post office (DHL)</option>
+                    <option value="punto_poste">Punto poste (Poste Italiane)</option>
+                    <option value="service_point">Service point (Poste Italiane)</option>
+                    <option value="SHOP">Shop (Hermes UK)</option>
+                  </select>
+
+                  <small class="form-text">You can use any value for the <code>shopType</code> option, not just the ones listed here.</small>
+
+                  <small class="form-text">
+                    Available options:
+                    <code>packStation</code>,
+                    <code>parcelShop</code>,
+                    <code>postOffice</code>,
+                    <code>punto_poste</code>,
+                    <code>service_point</code>,
+                    <code>SHOP</code> (yes, our shop types are wildly inconsistent)
+                  </small>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-2">
                   <span class="form-label">
                     Carriers
                   </span>
@@ -472,6 +506,7 @@
     const cityField = document.getElementById('city')
     const servicePointIdField = document.getElementById('servicePointId')
     const postNumberField = document.getElementById('postNumber')
+    const shopTypeField = document.getElementById('shopType')
 
     const openServicePointPickerButton = document.getElementById('openServicePointPicker')
     const servicePointResultElement = document.getElementById('servicePointResult')
@@ -492,6 +527,7 @@
        * @property {string} postalCode Optional. Defaults to '' (empty string).
        * @property {string} city Optional. Defaults to '' (empty string).
        * @property {string} carriers Optional. Comma-separated list of carriers for which to filter service points. If not provided, the service points aren’t filtered.
+       * @property {string} shopType Optional. Defaults to '' (empty string).
        * @property {number} servicePointId Optional. Set a pre-selected service point to be shown upon displaying the map.
        * @property {string} postNumber Optional. Set a pre-defined post number to fill its corresponding field upon displaying the map.
        */
@@ -505,6 +541,7 @@
         servicePointId: parseInt(servicePointIdField.value),
         postNumber: postNumberField.value,
         language: languageField.value,
+        shopType: shopTypeField.value,
       }
 
       sendcloud.servicePoints.open(options, successCallback, failureCallback)
