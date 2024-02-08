@@ -1,6 +1,6 @@
 # Repository not maintained here anymore
 
-You can find the plugin directly [here](https://gitlab.com/sendcloud-public/spp-integration-example) 
+You can find the maintained repository [here](https://gitlab.com/sendcloud-public/spp-integration-example) 
 
 
 # Service point picker
