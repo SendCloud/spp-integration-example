@@ -1,3 +1,8 @@
+# Repository not maintained here anymore
+
+You can find the plugin directly [here](https://gitlab.com/sendcloud-public/spp-integration-example) 
+
+
 # Service point picker
 
 This repository demonstrates how to integrate Sendcloud’s service point picker into a custom application.
